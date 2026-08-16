@@ -8,7 +8,7 @@ import Animated, {
   withTiming,
   cancelAnimation,
 } from 'react-native-reanimated';
-import { Pressable, PressableProps } from 'react-native';
+import { Pressable, PressableProps, useColorScheme } from 'react-native';
 import { Icon } from '@/components-next/common';
 import { SparkleIcon, AnimatedSparkleIcon } from '@/svg-icons';
 import { useScaleAnimation } from '@/utils';
@@ -22,6 +22,10 @@ type CopilotButtonProps = PressableProps & {
 export const CopilotButton = ({ isActive = false, isThinking = false, ...props }: CopilotButtonProps) => {
   const { animatedStyle, handlers } = useScaleAnimation();
   const starPhase = useSharedValue(0);
+  const colorScheme = useColorScheme();
+  const iconColor = tailwind.color(
+    colorScheme === 'dark' ? 'text-grayDark-950' : 'text-gray-950',
+  ) as string;
 
   useEffect(() => {
     if (isThinking) {
@@ -65,7 +69,7 @@ export const CopilotButton = ({ isActive = false, isThinking = false, ...props }
               largeStarStyle={largeStarStyle}
             />
           ) : (
-            <Icon icon={<SparkleIcon filled={isActive} />} size={24} />
+            <Icon icon={<SparkleIcon filled={isActive} stroke={iconColor} />} size={24} />
           )}
         </Animated.View>
       </Pressable>

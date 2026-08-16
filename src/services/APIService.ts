@@ -99,6 +99,13 @@ class APIService {
           const store = getStore();
           store.dispatch({ type: 'auth/logout' });
         } else {
+          console.log('API ERROR DEBUG:', JSON.stringify({
+            url: error.config?.url,
+            baseURL: error.config?.baseURL,
+            status: error.response?.status,
+            message: error.message,
+            data: error.response?.data,
+          }, null, 2));
           showToast({ message: I18n.t('ERRORS.COMMON_ERROR') });
         }
         return Promise.reject(error);
