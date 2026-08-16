@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import React, { forwardRef, useCallback } from 'react';
-import { Dimensions, Platform, Pressable, StyleSheet } from 'react-native';
+import { Dimensions, Platform, Pressable, StyleSheet, useColorScheme } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   Extrapolation,
@@ -134,7 +134,9 @@ export const Swipeable = forwardRef((props: SwipeableProps, _ref) => {
   const isGestureActive = useSharedValue(false);
 
   const maxTranslation = WIDTH * 0.6;
-  const tappedBgStyle = tailwind.color('bg-gray-200') as string;
+  const colorScheme = useColorScheme();
+  const baseCellBg = tailwind.color(colorScheme === 'dark' ? 'bg-grayDark-50' : 'bg-white') as string;
+  const tappedBgStyle = tailwind.color(colorScheme === 'dark' ? 'bg-grayDark-200' : 'bg-gray-200') as string;
   const maxSnapPointLeft = -maxTranslation;
   const maxSnapPointRight = maxTranslation;
 
@@ -427,7 +429,7 @@ export const Swipeable = forwardRef((props: SwipeableProps, _ref) => {
 
   const tappedCellStyle = useAnimatedStyle(() => {
     return {
-      backgroundColor: interpolateColor(isTapped.value, [0, 1], ['white', tappedBgStyle]),
+      backgroundColor: interpolateColor(isTapped.value, [0, 1], [baseCellBg, tappedBgStyle]),
     };
   });
 

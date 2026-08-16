@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { Platform, Pressable } from 'react-native';
+import { Platform, Pressable, useColorScheme } from 'react-native';
 import Animated, {
   interpolate,
   useAnimatedStyle,
@@ -33,16 +33,17 @@ const tabEnterSpringConfig = { damping: 30, stiffness: 360, mass: 1 };
 type TabBarIconsProps = {
   focused: boolean;
   route: RouteProp<TabParamList, keyof TabParamList>;
+  color: string;
 };
 
-const TabBarIcons = ({ focused, route }: TabBarIconsProps) => {
+const TabBarIcons = ({ focused, route, color }: TabBarIconsProps) => {
   switch (route.name) {
     case 'Conversations':
-      return focused ? <ConversationIconFilled /> : <ConversationIconOutline />;
+      return focused ? <ConversationIconFilled color={color} /> : <ConversationIconOutline color={color} />;
     case 'Inbox':
-      return focused ? <InboxIconFilled /> : <InboxIconOutline />;
+      return focused ? <InboxIconFilled color={color} /> : <InboxIconOutline color={color} />;
     case 'Settings':
-      return focused ? <SettingsIconFilled /> : <SettingsIconOutline />;
+      return focused ? <SettingsIconFilled color={color} /> : <SettingsIconOutline color={color} />;
   }
 };
 
@@ -50,7 +51,6 @@ type TabBarBackgroundProps = BlurViewProps & PropsWithChildren;
 
 const TabBarBackground = (props: TabBarBackgroundProps) => {
   const { children, style, blurAmount, blurType } = props;
-
   const currentState = useAppSelector(selectCurrentState);
 
   const tabBarHeight = useTabBarHeight();
@@ -83,6 +83,9 @@ const TabBarBackground = (props: TabBarBackgroundProps) => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const TabItem = (props: any) => {
   const { handlers, animatedStyle } = useScaleAnimation();
+  const colorScheme = useColorScheme();
+  console.log("COLOR SCHEME:", colorScheme);
+  const iconColor = tailwind.color(colorScheme === 'dark' ? 'text-grayDark-950' : 'text-gray-950') as string;
 
   const { onPress, onLongPress, isFocused, options, route } = props;
 
@@ -106,7 +109,7 @@ const TabItem = (props: any) => {
         testID={options.tabBarTestID}
         onPress={onPress}
         onLongPress={onLongPress}>
-        <TabBarIcons focused={isFocused} route={route} />
+        <TabBarIcons focused={isFocused} route={route} color={iconColor} />
       </Pressable>
     </Animated.View>
   );
@@ -115,6 +118,8 @@ const TabItem = (props: any) => {
 export const BottomTabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
   const hapticSelection = useHaptic();
   const tabBarHeight = useTabBarHeight();
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === 'dark';
 
   // Memoize press handlers using useCallback
   const createPressHandler = React.useCallback(
@@ -151,22 +156,24 @@ export const BottomTabBar = ({ state, descriptors, navigation }: BottomTabBarPro
   return (
     <TabBarBackground
       blurAmount={25}
-      blurType="light"
+      blurType={isDark ? 'dark' : 'light'}
       style={Platform.select({
         ios: [
           tailwind.style(
-            'flex flex-row absolute w-full bottom-0 pl-[72px] pr-[71px] pt-[11px] pb-8 bg-[#00000009]',
+            isDark
+              ? 'flex flex-row absolute w-full bottom-0 pl-[72px] pr-[71px] pt-[11px] pb-8 bg-[#ffffff09]'
+              : 'flex flex-row absolute w-full bottom-0 pl-[72px] pr-[71px] pt-[11px] pb-8 bg-[#00000009]',
             `h-[${tabBarHeight}px]`,
           ),
         ],
         android: [
           tailwind.style(
-            'flex flex-row absolute w-full bottom-0 pl-[72px] pr-[71px] py-[11px] bg-white',
+            'flex flex-row absolute w-full bottom-0 pl-[72px] pr-[71px] py-[11px] bg-white dark:bg-grayDark-50',
             `h-[${tabBarHeight}px]`,
           ),
         ],
       })}>
-      <Animated.View style={tailwind.style('absolute inset-0 h-[1px] bg-blackA-A3')} />
+      <Animated.View style={tailwind.style('absolute inset-0 h-[1px] bg-blackA-A3 dark:bg-whiteA-A3')} />
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const isFocused = state.index === index;

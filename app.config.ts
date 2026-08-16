@@ -2,18 +2,18 @@ import { ConfigContext, ExpoConfig } from 'expo/config';
 
 export default ({ config }: ConfigContext): ExpoConfig => {
   return {
-    name: 'Chatwoot',
+    name: 'Chat Lince',
     slug: process.env.EXPO_PUBLIC_APP_SLUG || 'chatwoot-mobile',
     version: '4.8.0',
     orientation: 'portrait',
     icon: './assets/icon.png',
-    userInterfaceStyle: 'light',
+    userInterfaceStyle: 'automatic',
     newArchEnabled: false,
     scheme: 'chatwootapp',
     splash: {
       image: './assets/splash.png',
       resizeMode: 'contain',
-      backgroundColor: '#ffffff',
+      backgroundColor: '#1b1b1b',
       enableFullScreenImage_legacy: true,
     },
     ios: {
@@ -30,16 +30,14 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         UIBackgroundModes: ['fetch', 'remote-notification'],
         ITSAppUsesNonExemptEncryption: false,
       },
-      // Please use the relative path to the google-services.json file
       googleServicesFile: process.env.EXPO_PUBLIC_IOS_GOOGLE_SERVICES_FILE,
       entitlements: { 'aps-environment': 'production' },
       associatedDomains: ['applinks:app.chatwoot.com'],
     },
     android: {
-      adaptiveIcon: { foregroundImage: './assets/adaptive-icon.png', backgroundColor: '#ffffff' },
+      adaptiveIcon: { foregroundImage: './assets/adaptive-icon.png', backgroundColor: '#1b1b1b' },
       package: 'com.chatwoot.app',
       permissions: ['android.permission.CAMERA', 'android.permission.RECORD_AUDIO'],
-      // Please use the relative path to the google-services.json file
       googleServicesFile: process.env.EXPO_PUBLIC_ANDROID_GOOGLE_SERVICES_FILE,
       intentFilters: [
         {
@@ -68,28 +66,19 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     },
     extra: {
       eas: {
-        projectId: process.env.EXPO_PUBLIC_PROJECT_ID,
+        projectId: '3597b2c4-6ff1-4274-bb9c-5b1911fd8379',
         storybookEnabled: process.env.EXPO_STORYBOOK_ENABLED,
       },
     },
-    owner: 'chatwoot',
+    owner: 'victor100295',
     plugins: [
       'expo-font',
       ['react-native-permissions', { iosPermissions: ['Camera', 'PhotoLibrary', 'MediaLibrary'] }],
-      [
-        '@sentry/react-native/expo',
-        {
-          url: 'https://sentry.io/',
-          project: process.env.EXPO_PUBLIC_SENTRY_PROJECT_NAME,
-          organization: process.env.EXPO_PUBLIC_SENTRY_ORG_NAME,
-        },
-      ],
       '@react-native-firebase/app',
       '@react-native-firebase/messaging',
       [
         'expo-build-properties',
         {
-          // https://github.com/invertase/notifee/issues/808#issuecomment-2175934609
           android: {
             minSdkVersion: 24,
             compileSdkVersion: 35,
@@ -101,6 +90,6 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       ],
       './with-ffmpeg-pod.js',
     ],
-    androidNavigationBar: { backgroundColor: '#ffffff' },
+    androidNavigationBar: { backgroundColor: '#1b1b1b' },
   };
 };
