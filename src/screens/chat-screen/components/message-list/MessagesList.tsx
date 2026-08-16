@@ -97,7 +97,7 @@ export const MessagesList = ({
   return (
     <Animated.View
       layout={LinearTransition.springify().damping(38).stiffness(240)}
-      style={[tailwind.style('flex-1 min-h-10'), animatedFlashlistStyle]}>
+      style={[tailwind.style('flex-1 min-h-10 bg-white dark:bg-grayDark-50'), animatedFlashlistStyle]}>
       <AnimatedFlashlist
         layout={LinearTransition.springify().damping(38).stiffness(240)}
         onLayout={() => {
@@ -121,7 +121,7 @@ export const MessagesList = ({
         onEndReached={onEndReached}
         onEndReachedThreshold={0.1}
         data={messages}
-        contentContainerStyle={tailwind.style('px-3')}
+        contentContainerStyle={tailwind.style('px-3 bg-white dark:bg-grayDark-50')}
         keyboardShouldPersistTaps="handled"
         keyExtractor={(item: { date: string } | Message) => {
           if ('date' in item) {

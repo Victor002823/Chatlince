@@ -1,4 +1,5 @@
 import React from 'react';
+import { useColorScheme } from 'react-native';
 import ImageModal from 'react-native-image-modal';
 import { tailwind } from '@/theme';
 import { useImageDimensions } from '@/hooks/useImageDimensions';
@@ -7,6 +8,10 @@ import type { ImageCellProps, ImageContainerProps } from '@/hooks/useImageDimens
 export const ImageBubbleContainer = (props: ImageContainerProps) => {
   const { imageSrc, maxWidth = 300, maxHeight = 360 } = props;
   const imageStyle = useImageDimensions(imageSrc, maxWidth, maxHeight);
+  const colorScheme = useColorScheme();
+  const imageBgColor = tailwind.color(
+    colorScheme === 'dark' ? 'bg-grayDark-100' : 'bg-gray-100',
+  ) as string;
 
   return (
     <ImageModal
@@ -14,7 +19,7 @@ export const ImageBubbleContainer = (props: ImageContainerProps) => {
       resizeMode="contain"
       modalImageResizeMode="contain"
       overlayBackgroundColor="#000000"
-      imageBackgroundColor="#F3F4F6"
+      imageBackgroundColor={imageBgColor}
       isTranslucent
       style={[tailwind.style('bg-gray-100 dark:bg-grayDark-100 overflow-hidden'), imageStyle]}
     />
