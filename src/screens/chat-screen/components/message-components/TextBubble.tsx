@@ -37,7 +37,7 @@ export const TextBubble = (props: TextBubbleProps) => {
     hasTranslations && !showOriginal ? translatedText : (content || '');
 
   const toggleTextColor =
-    variant === MESSAGE_VARIANTS.USER ? 'text-blue-200' : 'text-blue-700';
+    variant === MESSAGE_VARIANTS.USER ? 'text-blue-200 dark:text-blueDark-200' : 'text-blue-700 dark:text-blueDark-700';
 
   const renderContent = () => (
     <React.Fragment>
@@ -63,7 +63,7 @@ export const TextBubble = (props: TextBubbleProps) => {
       {contentAttributes && <EmailMeta {...{ contentAttributes, sender }} />}
       {isPrivate ? (
         <Animated.View style={tailwind.style('flex flex-row')}>
-          <Animated.View style={tailwind.style('w-[3px] bg-amber-700 h-auto rounded-[4px]')} />
+          <Animated.View style={tailwind.style('w-[3px] bg-amber-700 dark:bg-amberDark-700 h-auto rounded-[4px]')} />
           <Animated.View style={tailwind.style('pl-2.5')}>{renderContent()}</Animated.View>
         </Animated.View>
       ) : (

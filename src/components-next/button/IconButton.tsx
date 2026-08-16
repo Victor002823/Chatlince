@@ -17,8 +17,8 @@ type ButtonProps = {
 
 const getButtonStyles = (isPrimary: boolean, pressed: boolean) => {
   const baseStyles = 'py-[11px] flex-row items-center justify-center rounded-[13px] gap-4';
-  const variantStyles = isPrimary ? 'bg-blue-800' : 'bg-gray-50';
-  const pressedStyles = isPrimary ? 'opacity-95' : pressed ? 'bg-gray-100' : '';
+  const variantStyles = isPrimary ? 'bg-blue-800 dark:bg-blueDark-800' : 'bg-gray-50 dark:bg-grayDark-50';
+  const pressedStyles = isPrimary ? 'opacity-95' : pressed ? 'bg-gray-100 dark:bg-grayDark-100' : '';
 
   return tailwind.style(baseStyles, variantStyles, pressedStyles);
 };
@@ -27,11 +27,11 @@ const getTextStyles = (isPrimary: boolean, isDestructive: boolean) => {
   const baseStyles = 'text-base font-medium tracking-[0.16px] leading-[22px]';
   const colorStyles = isPrimary
     ? isDestructive
-      ? 'text-tomato-800'
-      : 'text-blue-800'
+      ? 'text-tomato-800 dark:text-tomatoDark-800'
+      : 'text-blue-800 dark:text-blueDark-800'
     : isDestructive
-      ? 'text-ruby-800'
-      : 'text-blue-800';
+      ? 'text-ruby-800 dark:text-rubyDark-800'
+      : 'text-blue-800 dark:text-blueDark-800';
 
   return tailwind.style(baseStyles, colorStyles);
 };
@@ -66,7 +66,7 @@ export const IconButton = ({
         style={({ pressed }) => getButtonStyles(isPrimary, pressed)}
         {...handlers}>
         <Icon
-          icon={<PhoneIcon strokeWidth={2} stroke={tailwind.color('bg-blue-800')} />}
+          icon={<PhoneIcon strokeWidth={2} stroke={tailwind.color('bg-blue-800 dark:bg-blueDark-800')} />}
           size={24}
         />
         <Animated.Text style={getTextStyles(isPrimary, isDestructive)}>{text}</Animated.Text>

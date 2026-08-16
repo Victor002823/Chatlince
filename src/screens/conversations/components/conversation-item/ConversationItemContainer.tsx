@@ -55,7 +55,7 @@ const StatusComponent = React.memo(() => {
   return (
     <Animated.View style={tailwind.style('flex justify-center items-center ')}>
       <Icon icon={<StatusIcon />} size={24} />
-      <Animated.Text style={tailwind.style('text-sm font-inter-420-20 pt-[3px] text-white')}>
+      <Animated.Text style={tailwind.style('text-sm font-inter-420-20 pt-[3px] text-white dark:text-grayDark-50')}>
         {i18n.t('CONVERSATION.ITEM.STATUS')}
       </Animated.Text>
     </Animated.View>

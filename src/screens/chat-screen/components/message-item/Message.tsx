@@ -70,32 +70,32 @@ type MessageWrapperProps = {
 };
 
 const variantTextMap = {
-  [MESSAGE_VARIANTS.AGENT]: 'text-gray-700',
-  [MESSAGE_VARIANTS.USER]: 'text-white',
-  [MESSAGE_VARIANTS.BOT]: 'text-gray-700',
-  [MESSAGE_VARIANTS.TEMPLATE]: 'text-gray-700',
-  [MESSAGE_VARIANTS.ERROR]: 'text-white',
+  [MESSAGE_VARIANTS.AGENT]: 'text-gray-700 dark:text-grayDark-700',
+  [MESSAGE_VARIANTS.USER]: 'text-white dark:text-grayDark-50',
+  [MESSAGE_VARIANTS.BOT]: 'text-gray-700 dark:text-grayDark-700',
+  [MESSAGE_VARIANTS.TEMPLATE]: 'text-gray-700 dark:text-grayDark-700',
+  [MESSAGE_VARIANTS.ERROR]: 'text-white dark:text-grayDark-50',
 };
 
 const variantBaseMap = {
-  [MESSAGE_VARIANTS.AGENT]: 'bg-gray-100',
-  [MESSAGE_VARIANTS.PRIVATE]: 'bg-amber-100',
-  [MESSAGE_VARIANTS.USER]: 'bg-blue-700',
-  [MESSAGE_VARIANTS.BOT]: 'bg-blue-100',
-  [MESSAGE_VARIANTS.TEMPLATE]: 'bg-blue-100',
-  [MESSAGE_VARIANTS.ERROR]: 'bg-ruby-700',
-  [MESSAGE_VARIANTS.EMAIL]: 'bg-gray-100',
-  [MESSAGE_VARIANTS.UNSUPPORTED]: 'bg-amber-100 border border-dashed border-amber-700',
+  [MESSAGE_VARIANTS.AGENT]: 'bg-gray-100 dark:bg-grayDark-100',
+  [MESSAGE_VARIANTS.PRIVATE]: 'bg-amber-100 dark:bg-amberDark-100',
+  [MESSAGE_VARIANTS.USER]: 'bg-blue-700 dark:bg-blueDark-700',
+  [MESSAGE_VARIANTS.BOT]: 'bg-blue-100 dark:bg-blueDark-100',
+  [MESSAGE_VARIANTS.TEMPLATE]: 'bg-blue-100 dark:bg-blueDark-100',
+  [MESSAGE_VARIANTS.ERROR]: 'bg-ruby-700 dark:bg-rubyDark-700',
+  [MESSAGE_VARIANTS.EMAIL]: 'bg-gray-100 dark:bg-grayDark-100',
+  [MESSAGE_VARIANTS.UNSUPPORTED]: 'bg-amber-100 dark:bg-amberDark-100 border border-dashed border-amber-700 dark:border-amberDark-700',
 };
 
 const variantBorderMap = {
-  [MESSAGE_VARIANTS.AGENT]: 'border-gray-100',
-  [MESSAGE_VARIANTS.USER]: 'border-gray-100',
-  [MESSAGE_VARIANTS.BOT]: 'border-gray-100',
-  [MESSAGE_VARIANTS.TEMPLATE]: 'border-gray-100',
-  [MESSAGE_VARIANTS.ERROR]: 'border-gray-100',
-  [MESSAGE_VARIANTS.EMAIL]: 'border-gray-100',
-  [MESSAGE_VARIANTS.UNSUPPORTED]: 'border-gray-100',
+  [MESSAGE_VARIANTS.AGENT]: 'border-gray-100 dark:border-grayDark-100',
+  [MESSAGE_VARIANTS.USER]: 'border-gray-100 dark:border-grayDark-100',
+  [MESSAGE_VARIANTS.BOT]: 'border-gray-100 dark:border-grayDark-100',
+  [MESSAGE_VARIANTS.TEMPLATE]: 'border-gray-100 dark:border-grayDark-100',
+  [MESSAGE_VARIANTS.ERROR]: 'border-gray-100 dark:border-grayDark-100',
+  [MESSAGE_VARIANTS.EMAIL]: 'border-gray-100 dark:border-grayDark-100',
+  [MESSAGE_VARIANTS.UNSUPPORTED]: 'border-gray-100 dark:border-grayDark-100',
 };
 
 const MessageWrapper = ({
@@ -179,7 +179,7 @@ const MessageWrapper = ({
             {isTargetMessage && (
               <Animated.View
                 style={[
-                  tailwind.style('absolute inset-0 bg-white rounded-2xl'),
+                  tailwind.style('absolute inset-0 bg-white dark:bg-grayDark-50 rounded-2xl'),
                   highlightStyle,
                 ]}
                 pointerEvents="none"
@@ -204,8 +204,8 @@ const MessageWrapper = ({
                   channel={channel}
                   sourceId={item.sourceId}
                   errorMessage={item.contentAttributes?.externalError || ''}
-                  deliveredColor="text-gray-700"
-                  sentColor="text-gray-700"
+                  deliveredColor="text-gray-700 dark:text-grayDark-700"
+                  sentColor="text-gray-700 dark:text-grayDark-700"
                 />
               </Animated.View>
             )}

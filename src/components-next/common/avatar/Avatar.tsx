@@ -83,7 +83,7 @@ export interface AvatarProps extends ViewProps {
   /**
    * StatusIndicator's Background Color & StatusIndicator Ring Color.
    *
-   * @default "text-white"
+   * @default "text-white dark:text-grayDark-50"
    */
   parentsBackground: string;
   /**
@@ -99,7 +99,7 @@ export const Avatar: React.FC<Partial<AvatarProps>> = props => {
     name,
     src,
     status,
-    parentsBackground = 'text-white',
+    parentsBackground = 'text-white dark:text-grayDark-50',
     imageProps = {},
     channel,
     style,

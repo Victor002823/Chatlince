@@ -43,7 +43,7 @@ export const MacrosList = ({ conversationId }: { conversationId: number }) => {
       <BottomSheetModal
         ref={macrosListSheetRef}
         backdropComponent={BottomSheetBackdrop}
-        handleIndicatorStyle={tailwind.style('overflow-hidden bg-blackA-A6 w-8 h-1 rounded-[11px]')}
+        handleIndicatorStyle={tailwind.style('overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]')}
         handleStyle={tailwind.style('p-0 h-4 pt-[5px]')}
         style={tailwind.style('rounded-t-[26px] overflow-hidden')}
         enablePanDownToClose
@@ -58,7 +58,7 @@ export const MacrosList = ({ conversationId }: { conversationId: number }) => {
                 <View style={tailwind.style('px-4 pt-1 pb-4 items-center')}>
                   <Animated.Text
                     style={tailwind.style(
-                      'text-gray-700 font-inter-580-24 leading-[17px] tracking-[0.32px]',
+                      'text-gray-700 dark:text-grayDark-700 font-inter-580-24 leading-[17px] tracking-[0.32px]',
                     )}>
                     {i18n.t('MACRO.SELECT_MACRO')}
                   </Animated.Text>

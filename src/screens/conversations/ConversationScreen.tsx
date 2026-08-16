@@ -256,7 +256,7 @@ const ConversationList = () => {
         `pb-[${TAB_BAR_HEIGHT}px]`,
       )}>
       <EmptyStateIcon />
-      <Animated.Text style={tailwind.style('pt-6 text-md  tracking-[0.32px] text-gray-800')}>
+      <Animated.Text style={tailwind.style('pt-6 text-md  tracking-[0.32px] text-gray-800 dark:text-grayDark-800')}>
         {i18n.t('CONVERSATION.EMPTY')}
       </Animated.Text>
     </Animated.ScrollView>
@@ -322,10 +322,10 @@ const ConversationScreen = () => {
   }, [currentBottomSheet]);
 
   return (
-    <SafeAreaView edges={['top']} style={tailwind.style('flex-1 bg-white')}>
+    <SafeAreaView edges={['top']} style={tailwind.style('flex-1 bg-white dark:bg-grayDark-50')}>
       <StatusBar
         translucent
-        backgroundColor={tailwind.color('bg-white')}
+        backgroundColor={tailwind.color('bg-white dark:bg-grayDark-50')}
         barStyle={'dark-content'}
       />
       <ConversationListStateProvider>
@@ -335,7 +335,7 @@ const ConversationScreen = () => {
           ref={filtersModalSheetRef}
           backdropComponent={BottomSheetBackdrop}
           handleIndicatorStyle={tailwind.style(
-            'overflow-hidden bg-blackA-A6 w-8 h-1 rounded-[11px]',
+            'overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]',
           )}
           handleStyle={tailwind.style('p-0 h-4 pt-[5px]')}
           style={tailwind.style('rounded-[26px] overflow-hidden')}

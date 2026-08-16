@@ -51,10 +51,10 @@ export const NoNetworkBar = () => {
   };
 
   return !connected ? (
-    <SafeAreaView style={tailwind.style('bg-red-900')}>
+    <SafeAreaView style={tailwind.style('bg-red-900 dark:bg-redDark-900')}>
       <StatusBar backgroundColor={tailwind.color('red-900')} />
       <Animated.View style={[tailwind.style(' px-4 py-2'), animationStyle]}>
-        <Animated.Text style={[tailwind.style('text-white text-center text-sm'), animationStyle]}>
+        <Animated.Text style={[tailwind.style('text-white dark:text-grayDark-50 text-center text-sm'), animationStyle]}>
           {i18n.t('ERRORS.OfFLINE')}
         </Animated.Text>
       </Animated.View>

@@ -142,7 +142,7 @@ export const DeliveryStatus = (props: DeliveryStatusProps) => {
         icon={
           <MessagePendingIcon
             stroke={
-              isOutgoing ? tailwind.color('text-blackA-A12') : tailwind.color('text-whiteA-A12')
+              isOutgoing ? tailwind.color('text-blackA-A12 dark:text-whiteA-A12') : tailwind.color('text-whiteA-A12 dark:text-blackA-A12')
             }
           />
         }
@@ -154,12 +154,12 @@ export const DeliveryStatus = (props: DeliveryStatusProps) => {
   if (isFailed) {
     return (
       <Pressable onPress={() => deliveryStatusSheetRef.current?.present()}>
-        <Icon icon={<WarningIcon stroke={tailwind.color('text-whiteA-A11')} />} size={14} />
+        <Icon icon={<WarningIcon stroke={tailwind.color('text-whiteA-A11 dark:text-blackA-A11')} />} size={14} />
         <BottomSheetModal
           ref={deliveryStatusSheetRef}
           backdropComponent={BottomSheetBackdrop}
           handleIndicatorStyle={tailwind.style(
-            'overflow-hidden bg-blackA-A6 w-8 h-1 rounded-[11px]',
+            'overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]',
           )}
           enablePanDownToClose
           animationConfigs={animationConfigs}
@@ -177,7 +177,7 @@ export const DeliveryStatus = (props: DeliveryStatusProps) => {
   if (showReadIndicator()) {
     return (
       <Icon
-        icon={<DoubleCheckIcon renderSecondTick stroke={tailwind.color('text-blue-800')} />}
+        icon={<DoubleCheckIcon renderSecondTick stroke={tailwind.color('text-blue-800 dark:text-blueDark-800')} />}
         size={14}
       />
     );
@@ -189,7 +189,7 @@ export const DeliveryStatus = (props: DeliveryStatusProps) => {
         icon={
           <DoubleCheckIcon
             renderSecondTick={true}
-            stroke={tailwind.color(deliveredColor || 'text-whiteA-A12')}
+            stroke={tailwind.color(deliveredColor || 'text-whiteA-A12 dark:text-blackA-A12')}
           />
         }
         size={14}
@@ -200,7 +200,7 @@ export const DeliveryStatus = (props: DeliveryStatusProps) => {
   if (showSentIndicator()) {
     return (
       <Icon
-        icon={<DoubleCheckIcon stroke={tailwind.color(sentColor || 'text-whiteA-A12')} />}
+        icon={<DoubleCheckIcon stroke={tailwind.color(sentColor || 'text-whiteA-A12 dark:text-blackA-A12')} />}
         size={14}
       />
     );

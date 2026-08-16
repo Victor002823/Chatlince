@@ -64,7 +64,7 @@ const ContextMenuBottomSheetBackdrop = forwardRef<
 
   return (
     <Pressable onPress={handleBackdropPress} style={style}>
-      <Animated.View style={[tailwind.style('bg-blackA-A9'), style, animatedStyle]} />
+      <Animated.View style={[tailwind.style('bg-blackA-A9 dark:bg-whiteA-A9'), style, animatedStyle]} />
     </Pressable>
   );
 });
@@ -115,7 +115,7 @@ export const MessageMenu = (props: PropsWithChildren<MessageMenuProps>) => {
           ref={contextMenuSheetRef}
           backdropComponent={renderBackDrop}
           handleIndicatorStyle={tailwind.style(
-            'overflow-hidden bg-blackA-A6 w-8 h-1 rounded-[11px]',
+            'overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]',
           )}
           handleStyle={tailwind.style('p-0 h-4 pt-[5px]')}
           style={tailwind.style('mx-3 rounded-[26px] overflow-hidden')}
@@ -143,11 +143,11 @@ export const MessageMenu = (props: PropsWithChildren<MessageMenuProps>) => {
                     <Animated.View
                       style={tailwind.style(
                         'flex-1 ml-3 flex-row justify-between py-[11px] pr-3',
-                        index !== menuOptions.length - 1 ? 'border-b-[1px] border-blackA-A3' : '',
+                        index !== menuOptions.length - 1 ? 'border-b-[1px] border-blackA-A3 dark:border-whiteA-A3' : '',
                       )}>
                       <Animated.Text
                         style={tailwind.style(
-                          'text-base text-gray-950 font-inter-420-20 leading-[21px] tracking-[0.16px] capitalize',
+                          'text-base text-gray-950 dark:text-grayDark-950 font-inter-420-20 leading-[21px] tracking-[0.16px] capitalize',
                         )}>
                         {option.title}
                       </Animated.Text>

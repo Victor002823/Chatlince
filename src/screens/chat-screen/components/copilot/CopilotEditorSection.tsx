@@ -21,7 +21,7 @@ const markdownStyles = StyleSheet.create({
     fontFamily: 'Inter-400-20',
     lineHeight: 21,
     letterSpacing: -0.1,
-    color: tailwind.color('text-slate-950') as string,
+    color: tailwind.color('text-slate-950 dark:text-slateDark-950') as string,
   },
   paragraph: {
     marginTop: 0,
@@ -78,7 +78,7 @@ export const CopilotEditorSection = ({
         <Animated.View style={tailwind.style('w-10')} />
       )}
       <ScrollView
-        style={tailwind.style('flex-1 max-h-[120px] border border-blackA-A3 rounded-2xl')}
+        style={tailwind.style('flex-1 max-h-[120px] border border-blackA-A3 dark:border-whiteA-A3 rounded-2xl')}
         contentContainerStyle={tailwind.style('px-3 py-2')}>
         <Markdown style={markdownStyles} markdownit={markdownIt}>
           {displayText}

@@ -27,7 +27,7 @@ export function SearchHeader({
     <>
       <StatusBar
         translucent
-        backgroundColor={tailwind.color('bg-white')}
+        backgroundColor={tailwind.color('bg-white dark:bg-grayDark-50')}
         barStyle={'dark-content'}
       />
       <Animated.View style={tailwind.style('pt-2 pb-[12px] border-b border-b-blackA-A3')}>

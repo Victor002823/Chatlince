@@ -45,7 +45,7 @@ const DeleteComponent = React.memo(() => {
   return (
     <Animated.View style={tailwind.style('flex justify-center items-center')}>
       <Icon icon={<DeleteIcon />} size={24} />
-      <Animated.Text style={tailwind.style('text-sm font-inter-420-20 pt-[3px] text-white')}>
+      <Animated.Text style={tailwind.style('text-sm font-inter-420-20 pt-[3px] text-white dark:text-grayDark-50')}>
         {i18n.t('NOTIFICATION.DELETE')}
       </Animated.Text>
     </Animated.View>
@@ -137,7 +137,7 @@ export const InboxItemContainerComponent = (props: InboxItemContainerProps) => {
       handleOnRightOverswiped={onSwipeRightAction}
       handlePress={onPressAction}
       triggerOverswipeOnFlick
-      rightElementBgColor="bg-ruby-800"
+      rightElementBgColor="bg-ruby-800 dark:bg-rubyDark-800"
       {...{ index, openedRowIndex }}>
       <InboxItem
         isRead={isRead}

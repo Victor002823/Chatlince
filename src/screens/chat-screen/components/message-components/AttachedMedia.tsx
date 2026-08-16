@@ -89,7 +89,7 @@ const AttachedImage = (props: AttachedImageProps) => {
         <Animated.View
           style={[
             tailwind.style(
-              'absolute h-[19px] w-[19px] border-[1px] border-blackA-A6 bg-whiteA-A11 rounded-full justify-center items-center right-[2px] top-[2px] z-50',
+              'absolute h-[19px] w-[19px] border-[1px] border-blackA-A6 dark:border-whiteA-A6 bg-whiteA-A11 dark:bg-blackA-A11 rounded-full justify-center items-center right-[2px] top-[2px] z-50',
             ),
             animatedStyle,
           ]}>
@@ -143,7 +143,7 @@ const AttachedVideo = (props: AttachedVideoProps) => {
         <Animated.View
           style={[
             tailwind.style(
-              'absolute h-[19px] w-[19px] border-[1px] border-blackA-A6 bg-whiteA-A11 rounded-full justify-center items-center right-[2px] top-[2px] z-50',
+              'absolute h-[19px] w-[19px] border-[1px] border-blackA-A6 dark:border-whiteA-A6 bg-whiteA-A11 dark:bg-blackA-A11 rounded-full justify-center items-center right-[2px] top-[2px] z-50',
             ),
             animatedStyle,
           ]}>
@@ -165,7 +165,7 @@ const AttachedVideo = (props: AttachedVideoProps) => {
           <PlayIcon />
           <Animated.Text
             style={tailwind.style(
-              'text-whiteA-A12 text-xs font-inter-420-20 leading-[14px] tracking-[0.32px] pl-1',
+              'text-whiteA-A12 dark:text-blackA-A12 text-xs font-inter-420-20 leading-[14px] tracking-[0.32px] pl-1',
             )}>
             {typeof item.duration === 'number'
               ? formatSecondsToMinutes(Math.round(item.duration))
@@ -207,7 +207,7 @@ const AttachedFile = (props: AttachedFileProps) => {
             ellipsizeMode={'middle'}
             style={[
               tailwind.style(
-                'text-base tracking-[0.32px] leading-[22px] font-inter-normal-20 pt-1 text-gray-950',
+                'text-base tracking-[0.32px] leading-[22px] font-inter-normal-20 pt-1 text-gray-950 dark:text-grayDark-950',
               ),
             ]}>
             {item.fileName}
@@ -222,7 +222,7 @@ const AttachedFile = (props: AttachedFileProps) => {
         <Animated.View
           style={[
             tailwind.style(
-              'absolute h-[19px] w-[19px] border-[1px] border-blackA-A6 bg-whiteA-A11 rounded-full justify-center items-center right-[2px] top-[2px] z-50',
+              'absolute h-[19px] w-[19px] border-[1px] border-blackA-A6 dark:border-whiteA-A6 bg-whiteA-A11 dark:bg-blackA-A11 rounded-full justify-center items-center right-[2px] top-[2px] z-50',
             ),
             animatedStyle,
           ]}>

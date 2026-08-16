@@ -29,8 +29,8 @@ export const LocationBubble: React.FC<LocationBubbleProps> = props => {
           variant === MESSAGE_VARIANTS.USER
             ? 'text-base tracking-[0.32px] leading-[22px] font-inter-normal-20 underline'
             : '',
-          variant === MESSAGE_VARIANTS.USER ? 'text-white' : '',
-          variant === MESSAGE_VARIANTS.AGENT ? 'text-gray-950' : '',
+          variant === MESSAGE_VARIANTS.USER ? 'text-white dark:text-grayDark-50' : '',
+          variant === MESSAGE_VARIANTS.AGENT ? 'text-gray-950 dark:text-grayDark-950' : '',
         )}>
         See on map
       </Text>

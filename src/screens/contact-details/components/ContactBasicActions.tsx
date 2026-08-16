@@ -39,9 +39,9 @@ const ContactOptionComponent = (props: ContactOptionProps) => {
       <Pressable
         style={({ pressed }) => [
           tailwind.style(
-            'flex items-center justify-center flex-1 rounded-xl bg-gray-50 py-3',
+            'flex items-center justify-center flex-1 rounded-xl bg-gray-50 dark:bg-grayDark-50 py-3',
             `w-[${OPTION_WIDTH}px]`,
-            pressed ? 'bg-gray-100' : '',
+            pressed ? 'bg-gray-100 dark:bg-grayDark-100' : '',
           ),
         ]}
         onPress={handleOnPress}
@@ -50,7 +50,7 @@ const ContactOptionComponent = (props: ContactOptionProps) => {
         <Animated.Text
           numberOfLines={1}
           style={tailwind.style(
-            'text-cxs font-inter-medium-24 leading-[15px] tracking-[0.32px] text-center text-blue-800 pt-2',
+            'text-cxs font-inter-medium-24 leading-[15px] tracking-[0.32px] text-center text-blue-800 dark:text-blueDark-800 pt-2',
           )}>
           {option.contactType}
         </Animated.Text>
@@ -86,7 +86,7 @@ export const ContactBasicActions = (props: ContactBasicActionsProps) => {
           key="email"
           option={{
             contactType: i18n.t('CONTACT_DETAILS.EMAIL'),
-            icon: <MailIcon strokeWidth={2} stroke={tailwind.color('bg-blue-800')} />,
+            icon: <MailIcon strokeWidth={2} stroke={tailwind.color('bg-blue-800 dark:bg-blueDark-800')} />,
           }}
           handleOptionPress={onEmailPress}
         />
@@ -94,7 +94,7 @@ export const ContactBasicActions = (props: ContactBasicActionsProps) => {
           key="phoneNumber"
           option={{
             contactType: i18n.t('CONTACT_DETAILS.CALL'),
-            icon: <PhoneIcon strokeWidth={2} stroke={tailwind.color('bg-blue-800')} />,
+            icon: <PhoneIcon strokeWidth={2} stroke={tailwind.color('bg-blue-800 dark:bg-blueDark-800')} />,
           }}
           handleOptionPress={onCallPress}
         />

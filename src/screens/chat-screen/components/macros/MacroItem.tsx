@@ -52,7 +52,7 @@ const MacroItem = (props: MacroItemProps) => {
           <Animated.View>
             <Animated.Text
               style={tailwind.style(
-                'text-gray-950 font-inter-420-20 leading-[22px] tracking-[0.16px]',
+                'text-gray-950 dark:text-grayDark-950 font-inter-420-20 leading-[22px] tracking-[0.16px]',
               )}>
               {macro.name}
             </Animated.Text>

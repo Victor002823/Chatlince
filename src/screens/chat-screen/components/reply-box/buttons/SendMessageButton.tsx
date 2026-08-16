@@ -19,9 +19,9 @@ export const SendMessageButton = (props: SendMessageButtonProps) => {
     if (variant === 'copilot') {
       return disabled ? 'bg-[#9B9EF0]' : 'bg-[#5B5BD6]';
     }
-    if (disabled) return 'bg-gray-400';
-    if (isPrivateMessage) return 'bg-amber-700';
-    return 'bg-gray-950';
+    if (disabled) return 'bg-gray-400 dark:bg-grayDark-400';
+    if (isPrivateMessage) return 'bg-amber-700 dark:bg-amberDark-700';
+    return 'bg-gray-950 dark:bg-grayDark-950';
   };
 
   return (

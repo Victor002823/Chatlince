@@ -43,7 +43,7 @@ const HeaderTitle = () => (
     <Text
       numberOfLines={1}
       style={tailwind.style(
-        'text-[17px] font-inter-medium-24 tracking-[0.32px] leading-[17px] text-center text-gray-950',
+        'text-[17px] font-inter-medium-24 tracking-[0.32px] leading-[17px] text-center text-gray-950 dark:text-grayDark-950',
       )}>
       {i18n.t('CONVERSATION.HEADER.TITLE')}
     </Text>
@@ -59,7 +59,7 @@ const LeftSection = ({ currentState, isSelectedAll, onLeftIconPress }: LeftSecti
       <Animated.View style={tailwind.style('flex-1 items-start')}>
         <Pressable onPress={onLeftIconPress} hitSlop={16}>
           <Animated.View exiting={exiting} entering={entering}>
-            <Icon size={24} icon={<SearchIcon stroke={tailwind.color('text-gray-800')} />} />
+            <Icon size={24} icon={<SearchIcon stroke={tailwind.color('text-gray-800 dark:text-grayDark-800')} />} />
           </Animated.View>
         </Pressable>
       </Animated.View>
@@ -76,7 +76,7 @@ const LeftSection = ({ currentState, isSelectedAll, onLeftIconPress }: LeftSecti
               isSelectedAll ? (
                 <CheckedIcon />
               ) : (
-                <UncheckedIcon stroke={tailwind.color('text-gray-800')} />
+                <UncheckedIcon stroke={tailwind.color('text-gray-800 dark:text-grayDark-800')} />
               )
             }
           />
@@ -103,7 +103,7 @@ const FilterSection = ({
         <Text
           style={tailwind.style(
             'text-md font-inter-medium-24 leading-[17px] tracking-[0.24px]',
-            filtersAppliedCount === 0 ? 'text-gray-700' : 'text-blue-800',
+            filtersAppliedCount === 0 ? 'text-gray-700 dark:text-grayDark-700' : 'text-blue-800 dark:text-blueDark-800',
           )}>
           {i18n.t('CONVERSATION.HEADER.CLEAR_FILTER')}
           {filtersAppliedCount > 0 ? ` (${filtersAppliedCount})` : ''}
@@ -132,7 +132,7 @@ const RightSection = ({
             {filtersAppliedCount > 0 && (
               <Animated.View
                 style={tailwind.style(
-                  'absolute z-10 -right-0.5 h-2.5 w-2.5 rounded-full bg-blue-800',
+                  'absolute z-10 -right-0.5 h-2.5 w-2.5 rounded-full bg-blue-800 dark:bg-blueDark-800',
                 )}
               />
             )}

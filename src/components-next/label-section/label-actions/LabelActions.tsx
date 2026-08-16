@@ -92,7 +92,7 @@ export const LabelActions = (props: LabelActionsProps) => {
       <Animated.View style={tailwind.style('pl-4')}>
         <Animated.Text
           style={tailwind.style(
-            'text-sm font-inter-medium-24 leading-[16px] tracking-[0.32px] text-gray-700',
+            'text-sm font-inter-medium-24 leading-[16px] tracking-[0.32px] text-gray-700 dark:text-grayDark-700',
           )}>
           {titleText}
         </Animated.Text>
@@ -106,14 +106,14 @@ export const LabelActions = (props: LabelActionsProps) => {
           style={({ pressed }) => [
             styles.labelShadow,
             tailwind.style(
-              'flex flex-row items-center bg-white px-3 py-[7px] rounded-lg mr-2 mt-3',
-              pressed ? 'bg-blue-100' : '',
+              'flex flex-row items-center bg-white dark:bg-grayDark-50 px-3 py-[7px] rounded-lg mr-2 mt-3',
+              pressed ? 'bg-blue-100 dark:bg-blueDark-100' : '',
             ),
           ]}>
           <Icon icon={<LabelTag />} size={16} />
           <Animated.Text
             style={tailwind.style(
-              'text-md font-inter-medium-24 leading-[17px] tracking-[0.24px] pl-1.5 text-blue-800',
+              'text-md font-inter-medium-24 leading-[17px] tracking-[0.24px] pl-1.5 text-blue-800 dark:text-blueDark-800',
             )}>
             {addLabelText}
           </Animated.Text>
@@ -122,7 +122,7 @@ export const LabelActions = (props: LabelActionsProps) => {
       <BottomSheetModal
         ref={addLabelSheetRef}
         backdropComponent={backdropComponent}
-        handleIndicatorStyle={tailwind.style('overflow-hidden bg-blackA-A6 w-8 h-1 rounded-[11px]')}
+        handleIndicatorStyle={tailwind.style('overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]')}
         handleStyle={tailwind.style('p-0 h-4 pt-[5px]')}
         style={tailwind.style('rounded-[26px] overflow-hidden')}
         enablePanDownToClose
@@ -165,7 +165,6 @@ const styles = StyleSheet.create({
       },
       android: {
         elevation: 4,
-        backgroundColor: 'white',
       },
     }) || {}, // Add fallback empty object
 });

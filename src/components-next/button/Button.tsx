@@ -30,7 +30,7 @@ const getTextStyles = (isPrimary: boolean, isDestructive: boolean) => {
   const colorStyles = isPrimary
     ? isDestructive
       ? 'text-tomato-800 dark:text-tomatoDark-800'
-      : 'text-white dark:text-white'
+      : 'text-white dark:text-grayDark-50 dark:text-white'
     : isDestructive
       ? 'text-ruby-800 dark:text-rubyDark-800'
       : 'text-gray-950 dark:text-grayDark-950';

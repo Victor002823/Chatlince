@@ -29,7 +29,7 @@ const EmptyState = ({ label }: { label: string }) => (
   <Animated.View style={tailwind.style('flex-1 items-center justify-center px-6 pt-6')}>
     <Animated.Text
       style={tailwind.style(
-        'text-md font-inter-420-20 tracking-[0.16px] text-gray-700 text-center',
+        'text-md font-inter-420-20 tracking-[0.16px] text-gray-700 dark:text-grayDark-700 text-center',
       )}>
       {label}
     </Animated.Text>
@@ -118,7 +118,7 @@ export const WhatsAppTemplatesList = ({ conversationId }: WhatsAppTemplatesListP
         ref={whatsAppTemplatesSheetRef}
         backdropComponent={BottomSheetBackdrop}
         onDismiss={resetLocalState}
-        handleIndicatorStyle={tailwind.style('overflow-hidden bg-blackA-A6 w-8 h-1 rounded-[11px]')}
+        handleIndicatorStyle={tailwind.style('overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]')}
         handleStyle={tailwind.style('p-0 h-4 pt-[5px]')}
         style={tailwind.style('rounded-t-[26px] overflow-hidden')}
         enablePanDownToClose

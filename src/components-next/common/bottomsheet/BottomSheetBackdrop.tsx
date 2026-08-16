@@ -53,7 +53,7 @@ export const BottomSheetBackdrop: React.FC<BottomSheetBackgroundProps> = props =
 
   return (
     <Pressable onPress={handleBackdropPress} style={style}>
-      <Animated.View style={[tailwind.style('bg-blackA-A9'), style, animatedStyle]} />
+      <Animated.View style={[tailwind.style('bg-blackA-A9 dark:bg-whiteA-A9'), style, animatedStyle]} />
     </Pressable>
   );
 };

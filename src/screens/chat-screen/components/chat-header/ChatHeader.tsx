@@ -72,7 +72,7 @@ export const ChatHeader = ({
               <Animated.Text
                 numberOfLines={1}
                 style={tailwind.style(
-                  'text-[17px] font-inter-medium-24 tracking-[0.32px] text-gray-950',
+                  'text-[17px] font-inter-medium-24 tracking-[0.32px] text-gray-950 dark:text-grayDark-950',
                 )}>
                 {name}
               </Animated.Text>
@@ -95,7 +95,7 @@ export const ChatHeader = ({
                 icon={
                   <ResolvedIcon
                     strokeWidth={2}
-                    {...(isResolved && { stroke: tailwind.color('bg-green-700') })}
+                    {...(isResolved && { stroke: tailwind.color('bg-green-700 dark:bg-greenDark-700') })}
                   />
                 }
                 size={24}
@@ -112,7 +112,7 @@ export const ChatHeader = ({
       <BottomSheetModal
         ref={slaEventsSheetRef}
         backdropComponent={BottomSheetBackdrop}
-        handleIndicatorStyle={tailwind.style('overflow-hidden bg-blackA-A6 w-8 h-1 rounded-[11px]')}
+        handleIndicatorStyle={tailwind.style('overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]')}
         enablePanDownToClose
         animationConfigs={animationConfigs}
         handleStyle={tailwind.style('p-0 h-4 pt-[5px]')}

@@ -93,19 +93,19 @@ export function SearchSection({
             style={tailwind.style('flex-row items-center flex-1')}>
             <Animated.Text
               style={tailwind.style(
-                'text-sm font-inter-medium-24 leading-[17px] tracking-[0.16px] text-gray-700',
+                'text-sm font-inter-medium-24 leading-[17px] tracking-[0.16px] text-gray-700 dark:text-grayDark-700',
               )}>
               {i18n.t(section.labelKey)}
             </Animated.Text>
             <Animated.View style={[animatedIconStyle, tailwind.style('ml-2')]}>
-              <Icon icon={<CaretBottomSmall fill={tailwind.color('text-gray-700')} />} size={8} />
+              <Icon icon={<CaretBottomSmall fill={tailwind.color('text-gray-700 dark:text-grayDark-700')} />} size={8} />
             </Animated.View>
           </Pressable>
         ) : (
           <Animated.View style={tailwind.style('flex-row items-center')}>
             <Animated.Text
               style={tailwind.style(
-                'text-sm font-inter-medium-24 leading-[17px] tracking-[0.16px] text-gray-700',
+                'text-sm font-inter-medium-24 leading-[17px] tracking-[0.16px] text-gray-700 dark:text-grayDark-700',
               )}>
               {i18n.t(section.labelKey)}
               {activeTab !== 'all' && ` (${items.length})`}
@@ -119,7 +119,7 @@ export function SearchSection({
             <Pressable onPress={handleViewMorePress}>
               <Animated.Text
                 style={tailwind.style(
-                  'text-xs font-inter-420-20 leading-[17px] tracking-[0.16px] text-blue-800',
+                  'text-xs font-inter-420-20 leading-[17px] tracking-[0.16px] text-blue-800 dark:text-blueDark-800',
                 )}>
                 {i18n.t('SEARCH.VIEW_MORE')}
               </Animated.Text>

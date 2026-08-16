@@ -132,7 +132,7 @@ export const VideoBubble = (props: VideoBubbleProps) => {
           <Animated.View style={tailwind.style('flex flex-row absolute right-3 bottom-[5px]')}>
             <Text
               style={tailwind.style(
-                'text-xs font-inter-420-20 tracking-[0.32px] leading-[14px] text-whiteA-A12 pr-1',
+                'text-xs font-inter-420-20 tracking-[0.32px] leading-[14px] text-whiteA-A12 dark:text-blackA-A12 pr-1',
               )}>
               {unixTimestampToReadableTime(timeStamp)}
             </Text>
