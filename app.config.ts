@@ -84,6 +84,14 @@ export default ({ config }: ConfigContext): ExpoConfig => {
             compileSdkVersion: 35,
             targetSdkVersion: 35,
             enableProguardInReleaseBuilds: true,
+            extraProguardRules: `
+-keep class com.facebook.react.modules.network.** { *; }
+-dontwarn okhttp3.**
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+-keep class okio.** { *; }
+-dontwarn okio.**
+`,
           },
           ios: { useFrameworks: 'static' },
         },
