@@ -38,7 +38,7 @@ jobs:
 
       - name: Write google-services.json and unignore it
         run: |
-          echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > google-services.json
+          echo '${{ secrets.GOOGLE_SERVICES_JSON }}' | base64 -d > google-services.json
           mkdir -p android/app
           cp google-services.json android/app/google-services.json
           sed -i '/^google-services\.json/s/^/#/' .gitignore
