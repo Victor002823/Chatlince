@@ -48,6 +48,11 @@ jobs:
           git add -f google-services.json android/app/google-services.json .gitignore
           git commit -m "temp: include google-services.json for build" --allow-empty
 
+      - name: Increase Gradle memory
+        run: |
+          mkdir -p ~/.gradle
+          echo "org.gradle.jvmargs=-Xmx4096m -XX:MaxMetaspaceSize=1024m" >> ~/.gradle/gradle.properties
+
       - name: Build APK
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
