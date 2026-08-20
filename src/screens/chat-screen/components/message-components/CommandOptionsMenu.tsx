@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Alert, Linking, Platform, Pressable, Text } from 'react-native';
+import { Alert, Linking, Platform, Pressable, Text, useColorScheme } from 'react-native';
 import {
   pick,
   types as documentPickerTypes,
@@ -157,39 +157,39 @@ const handleAttachFile = async dispatch => {
   }
 };
 
-const ADD_MENU_OPTIONS = [
+const getAddMenuOptions = (iconColor: string) => [
   {
     id: 'photos',
-    icon: <PhotosIcon />,
+    icon: <PhotosIcon stroke={iconColor} />,
     titleKey: 'CONVERSATION_ATTACHMENT.OPTIONS.PHOTOS',
     handlePress: handleOpenPhotosLibrary,
   },
   {
     id: 'camera',
-    icon: <CameraIcon />,
+    icon: <CameraIcon stroke={iconColor} />,
     titleKey: 'CONVERSATION_ATTACHMENT.OPTIONS.CAMERA',
     handlePress: handleLaunchCamera,
   },
   {
     id: 'attach_file',
-    icon: <AttachFileIcon />,
+    icon: <AttachFileIcon stroke={iconColor} />,
     titleKey: 'CONVERSATION_ATTACHMENT.OPTIONS.ATTACH_FILE',
     handlePress: handleAttachFile,
   },
   {
     id: 'macros',
-    icon: <MacrosIcon />,
+    icon: <MacrosIcon stroke={iconColor} />,
     titleKey: 'CONVERSATION_ATTACHMENT.OPTIONS.MACROS',
     handlePress: () => {},
   },
 ];
 
-const TEMPLATES_MENU_OPTION = {
+const getTemplatesMenuOption = (iconColor: string) => ({
   id: 'whatsapp_templates',
-  icon: <WhatsAppMonochromeIcon />,
+  icon: <WhatsAppMonochromeIcon stroke={iconColor} />,
   titleKey: 'CONVERSATION_ATTACHMENT.OPTIONS.WHATSAPP_TEMPLATES',
   handlePress: () => {},
-};
+});
 
 export const validateFileAndSetAttachments = async (dispatch, attachment) => {
   const { fileSize } = attachment;
@@ -202,7 +202,7 @@ export const validateFileAndSetAttachments = async (dispatch, attachment) => {
 
 type MenuOptionProps = {
   index: number;
-  menuOption: (typeof ADD_MENU_OPTIONS)[0];
+  menuOption: ReturnType<typeof getAddMenuOptions>[0];
 };
 
 const MenuOption = (props: MenuOptionProps) => {
@@ -251,12 +251,18 @@ export const CommandOptionsMenu = () => {
   const inboxId = conversation?.inboxId;
   const inbox = useAppSelector(state => (inboxId ? selectInboxById(state, inboxId) : undefined));
 
+  const colorScheme = useColorScheme();
+  const iconColor = tailwind.color(
+    colorScheme === 'dark' ? 'text-grayDark-950' : 'text-gray-950',
+  ) as string;
+
   const menuOptions = useMemo(() => {
+    const addMenuOptions = getAddMenuOptions(iconColor);
     if (inbox && isAWhatsAppChannel(inbox)) {
-      return [...ADD_MENU_OPTIONS, TEMPLATES_MENU_OPTION];
+      return [...addMenuOptions, getTemplatesMenuOption(iconColor)];
     }
-    return ADD_MENU_OPTIONS;
-  }, [inbox]);
+    return addMenuOptions;
+  }, [inbox, iconColor]);
 
   const perItemHeight = isAndroid ? 53 : 44;
   const containerHeight = perItemHeight * menuOptions.length + (bottom === 0 ? 16 : bottom);

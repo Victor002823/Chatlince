@@ -1,5 +1,5 @@
 import React, { forwardRef, PropsWithChildren, useCallback, useRef } from 'react';
-import { Platform, Pressable, View } from 'react-native';
+import { Platform, Pressable, View, useColorScheme } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, { interpolate, runOnJS, useAnimatedStyle } from 'react-native-reanimated';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -71,6 +71,7 @@ const ContextMenuBottomSheetBackdrop = forwardRef<
 
 export const MessageMenu = (props: PropsWithChildren<MessageMenuProps>) => {
   const { children, menuOptions } = props;
+  const colorScheme = useColorScheme();
 
   const contextMenuSheetRef = useRef<BottomSheetModal>(null);
   const openSheet = () => {
@@ -114,6 +115,7 @@ export const MessageMenu = (props: PropsWithChildren<MessageMenuProps>) => {
         <BottomSheetModal
           ref={contextMenuSheetRef}
           backdropComponent={renderBackDrop}
+          backgroundStyle={tailwind.style(colorScheme === 'dark' ? 'bg-grayDark-50' : 'bg-white')}
           handleIndicatorStyle={tailwind.style(
             'overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]',
           )}

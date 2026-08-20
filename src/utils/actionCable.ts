@@ -64,6 +64,7 @@ class ActionCableConnector extends BaseActionCableConnector {
   }
 
   onMessageCreated = (data: Message) => {
+    console.log('🔵 EVENT message.created RECEIVED:', JSON.stringify(data).slice(0, 200));
     const message = transformMessage(data);
     const { conversation, conversationId } = message;
     const lastActivityAt = conversation?.lastActivityAt;

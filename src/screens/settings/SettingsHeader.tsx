@@ -7,10 +7,10 @@ import { tailwind } from '@/theme';
 export const SettingsHeader = () => {
   return (
     <Animated.View>
-      <Animated.View style={tailwind.style('flex flex-row px-4 pt-2 pb-[12px]')}>
+      <Animated.View style={tailwind.style('flex flex-row px-4 pt-2 pb-[12px] bg-blue-800 dark:bg-blueDark-800')}>
         <Animated.View style={tailwind.style('flex-1 justify-center items-center')}>
           <Animated.Text
-            style={tailwind.style('text-[17px] font-medium  text-center text-gray-950 dark:text-grayDark-950')}>
+            style={tailwind.style('text-[17px] font-medium  text-center text-white')}>
             {i18n.t('SETTINGS.HEADER_TITLE')}
           </Animated.Text>
         </Animated.View>

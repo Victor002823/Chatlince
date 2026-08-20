@@ -4,6 +4,7 @@ import {
   AppState,
   RefreshControl,
   StatusBar,
+  useColorScheme,
   useWindowDimensions,
 } from 'react-native';
 import Animated, {
@@ -282,6 +283,7 @@ const ConversationList = () => {
 const ConversationScreen = () => {
   const currentBottomSheet = useAppSelector(selectBottomSheetState);
   const dispatch = useAppDispatch();
+  const colorScheme = useColorScheme();
 
   const animationConfigs = useBottomSheetSpringConfigs({
     mass: 1.2,
@@ -325,8 +327,8 @@ const ConversationScreen = () => {
     <SafeAreaView edges={['top']} style={tailwind.style('flex-1 bg-white dark:bg-grayDark-50')}>
       <StatusBar
         translucent
-        backgroundColor={tailwind.color('bg-white dark:bg-grayDark-50')}
-        barStyle={'dark-content'}
+        backgroundColor={tailwind.color('bg-blue-800 dark:bg-blueDark-800')}
+        barStyle="light-content"
       />
       <ConversationListStateProvider>
         <ConversationHeader />
@@ -334,6 +336,7 @@ const ConversationScreen = () => {
         <BottomSheetModal
           ref={filtersModalSheetRef}
           backdropComponent={BottomSheetBackdrop}
+          backgroundStyle={tailwind.style(colorScheme === 'dark' ? 'bg-grayDark-50' : 'bg-white')}
           handleIndicatorStyle={tailwind.style(
             'overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]',
           )}

@@ -18,6 +18,7 @@ import { notificationActions } from '@/store/notification/notificationAction';
 import {
   selectIsAllNotificationsFetched,
   selectIsLoadingNotifications,
+  selectLastFetchedAt,
   getFilteredNotifications,
 } from '@/store/notification/notificationSelectors';
 import { InboxHeader, InboxItemContainer } from './components';
@@ -42,6 +43,7 @@ const InboxList = () => {
   const sortOrder = useAppSelector(selectSortOrder);
 
   const notifications = useAppSelector(state => getFilteredNotifications(state, sortOrder));
+  const lastFetchedAt = useAppSelector(selectLastFetchedAt);
 
   const previousSortOrder = useRef(sortOrder);
 
@@ -70,7 +72,11 @@ const InboxList = () => {
   });
 
   useEffect(() => {
-    clearAndFetchNotifications(sortOrder);
+    const CACHE_FRESHNESS_MS = 90 * 1000;
+    const isCacheFresh = lastFetchedAt && Date.now() - lastFetchedAt < CACHE_FRESHNESS_MS;
+    if (!isCacheFresh) {
+      clearAndFetchNotifications(sortOrder);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -184,8 +190,8 @@ const InboxScreen = () => {
     <SafeAreaView edges={['top']} style={tailwind.style('flex-1 bg-white dark:bg-grayDark-50')}>
       <StatusBar
         translucent
-        backgroundColor={tailwind.color('bg-white dark:bg-grayDark-50')}
-        barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
+        backgroundColor={tailwind.color('bg-blue-800 dark:bg-blueDark-800')}
+        barStyle="light-content"
       />
       <InboxListStateProvider>
         <InboxHeader markAllAsRead={markAllAsRead} />

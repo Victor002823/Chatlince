@@ -43,6 +43,11 @@ export const selectIsAllNotificationsFetched = createSelector(
   state => state.uiFlags.isAllNotificationsFetched,
 );
 
+export const selectLastFetchedAt = createSelector(
+  selectNotificationsState,
+  state => state.lastFetchedAt,
+);
+
 export const getFilteredNotifications = createDraftSafeSelector(
   [selectAllNotifications, (_, sortOrder: SortTypes) => sortOrder],
   (notifications, sortOrder) => {

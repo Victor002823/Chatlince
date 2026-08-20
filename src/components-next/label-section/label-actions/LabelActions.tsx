@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Platform, Pressable, StyleSheet } from 'react-native';
+import { Platform, Pressable, StyleSheet, useColorScheme } from 'react-native';
 import Animated from 'react-native-reanimated';
 import {
   BottomSheetModal,
@@ -31,6 +31,7 @@ interface LabelActionsProps {
 export const LabelActions = (props: LabelActionsProps) => {
   const { labels, onLabelsUpdate, sheetRef, titleText, addLabelText, searchPlaceholderText } =
     props;
+  const colorScheme = useColorScheme();
   const [searchTerm, setSearchTerm] = useState('');
 
   const [selectedLabels, setSelectedLabels] = useState(labels);
@@ -122,6 +123,7 @@ export const LabelActions = (props: LabelActionsProps) => {
       <BottomSheetModal
         ref={addLabelSheetRef}
         backdropComponent={backdropComponent}
+        backgroundStyle={tailwind.style(colorScheme === 'dark' ? 'bg-grayDark-50' : 'bg-white')}
         handleIndicatorStyle={tailwind.style('overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]')}
         handleStyle={tailwind.style('p-0 h-4 pt-[5px]')}
         style={tailwind.style('rounded-[26px] overflow-hidden')}

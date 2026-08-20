@@ -128,8 +128,12 @@ const Tabs = () => {
   }, []);
 
   const initActionCable = useCallback(async () => {
+    console.log('🟢 initActionCable CALLED:', { pubSubToken: !!pubSubToken, webSocketUrl, accountId, userId });
     if (pubSubToken && webSocketUrl && accountId && userId) {
+      console.log('🟢 CALLING actionCableConnector.init');
       actionCableConnector.init({ pubSubToken, webSocketUrl, accountId, userId });
+    } else {
+      console.log('🔴 SKIPPED init — missing required value');
     }
   }, [accountId, pubSubToken, userId, webSocketUrl]);
 

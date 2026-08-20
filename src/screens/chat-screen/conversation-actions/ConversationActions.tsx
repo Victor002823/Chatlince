@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Alert, Dimensions, Platform, Share } from 'react-native';
+import { Alert, Dimensions, Platform, Share, useColorScheme } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 import { BottomSheetModal, useBottomSheetSpringConfigs } from '@gorhom/bottom-sheet';
@@ -36,6 +36,7 @@ export type ConversationActionType = 'mute' | 'status' | 'unmute';
 
 export const ConversationActions = () => {
   const dispatch = useAppDispatch();
+  const colorScheme = useColorScheme();
   const animationConfigs = useBottomSheetSpringConfigs({
     mass: 1,
     stiffness: 420,
@@ -165,6 +166,7 @@ export const ConversationActions = () => {
       <BottomSheetModal
         ref={updateParticipantSheetRef}
         backdropComponent={BottomSheetBackdrop}
+        backgroundStyle={tailwind.style(colorScheme === 'dark' ? 'bg-grayDark-50' : 'bg-white')}
         handleIndicatorStyle={tailwind.style('overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]')}
         handleStyle={tailwind.style('p-0 h-4 pt-[5px]')}
         style={tailwind.style('rounded-[26px] overflow-hidden')}

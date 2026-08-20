@@ -14,6 +14,7 @@ export interface NotificationState {
   totalCount: number;
   currentPage: string;
   error: string | null;
+  lastFetchedAt: number | null;
   uiFlags: {
     isLoading: boolean;
     isAllNotificationsRead: boolean;
@@ -28,6 +29,7 @@ const initialState = notificationsAdapter.getInitialState<NotificationState>({
   totalCount: 0,
   currentPage: '1',
   error: null,
+  lastFetchedAt: null,
   uiFlags: {
     isLoading: false,
     isAllNotificationsRead: false,
@@ -45,6 +47,7 @@ const notificationsSlice = createSlice({
       state.totalCount = 0;
       state.currentPage = '1';
       state.error = null;
+      state.lastFetchedAt = null;
     },
     addNotification(state, action: PayloadAction<NotificationCreatedResponse>) {
       const { notification, unreadCount } = action.payload;
@@ -74,6 +77,7 @@ const notificationsSlice = createSlice({
           state.totalCount = meta.count;
           state.currentPage = meta.currentPage;
           state.uiFlags.isLoading = false;
+          state.lastFetchedAt = Date.now();
           updateBadgeCount({ count: meta.unreadCount });
           if (meta.currentPage === '1') {
             notificationsAdapter.setAll(state, payload);

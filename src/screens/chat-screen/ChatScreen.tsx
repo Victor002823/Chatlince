@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PagerView, { PagerViewOnPageSelectedEvent } from 'react-native-pager-view';
 import Animated from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { ChatHeaderContainer } from './components';
@@ -141,6 +142,11 @@ const ChatScreen = (props: ChatScreenProps) => {
     const { messageId } = props.route.params;
     return (
       <SafeAreaView edges={['top']} style={tailwind.style('flex-1 bg-white dark:bg-grayDark-50')}>
+        <StatusBar
+          translucent
+          backgroundColor={tailwind.color('bg-blue-800 dark:bg-blueDark-800')}
+          barStyle="light-content"
+        />
         <ChatWindowProvider conversationId={conversationId} messageId={messageId}>
           <ChatScreenWrapper {...props} />
         </ChatWindowProvider>

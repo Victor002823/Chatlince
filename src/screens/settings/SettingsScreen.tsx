@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { StatusBar, Text, Platform, Pressable } from 'react-native';
+import { StatusBar, Text, Platform, Pressable, useColorScheme } from 'react-native';
 import Animated from 'react-native-reanimated';
 // import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -73,11 +73,12 @@ const appName = Application.applicationName;
 const appVersion = Application.nativeApplicationVersion;
 
 const buildNumber = Application.nativeBuildVersion;
-const appVersionDetails = buildNumber ? `${appVersion} (${buildNumber})` : appVersion;
+const appVersionDetails = appVersion;
 
 const SettingsScreen = () => {
   const navigation = useNavigation();
   const dispatch = useAppDispatch();
+  const colorScheme = useColorScheme();
   const availabilityStatus =
     (useSelector(selectCurrentUserAvailability) as AvailabilityStatus) || 'offline';
 
@@ -124,7 +125,7 @@ const SettingsScreen = () => {
 
   const isChatwootCloud = useAppSelector(selectIsChatwootCloud);
 
-  const chatwootInstance = isChatwootCloud ? `${appName} cloud` : `${appName} self-hosted`;
+  const chatwootInstance = `${appName}`;
 
   const accounts = useSelector(selectAccounts) || [];
 
@@ -278,8 +279,8 @@ const SettingsScreen = () => {
     <SafeAreaView style={tailwind.style('flex-1 bg-white dark:bg-grayDark-50 font-inter-normal-20')}>
       <StatusBar
         translucent
-        backgroundColor={tailwind.color('bg-white dark:bg-grayDark-50')}
-        barStyle={'dark-content'}
+        backgroundColor={tailwind.color('bg-blue-800 dark:bg-blueDark-800')}
+        barStyle="light-content"
       />
       <SettingsHeader />
       <Animated.ScrollView
@@ -330,6 +331,7 @@ const SettingsScreen = () => {
       <BottomSheetModal
         ref={userAvailabilityStatusSheetRef}
         backdropComponent={BottomSheetBackdrop}
+        backgroundStyle={tailwind.style(colorScheme === 'dark' ? 'bg-grayDark-50' : 'bg-white')}
         handleIndicatorStyle={tailwind.style('overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]')}
         enablePanDownToClose
         animationConfigs={animationConfigs}
@@ -349,6 +351,7 @@ const SettingsScreen = () => {
       <BottomSheetModal
         ref={languagesModalSheetRef}
         backdropComponent={BottomSheetBackdrop}
+        backgroundStyle={tailwind.style(colorScheme === 'dark' ? 'bg-grayDark-50' : 'bg-white')}
         handleIndicatorStyle={tailwind.style('overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]')}
         // TODO: Fix this later
         // bottomInset={bottom === 0 ? 12 : bottom}
@@ -365,6 +368,7 @@ const SettingsScreen = () => {
       <BottomSheetModal
         ref={notificationPreferencesSheetRef}
         backdropComponent={BottomSheetBackdrop}
+        backgroundStyle={tailwind.style(colorScheme === 'dark' ? 'bg-grayDark-50' : 'bg-white')}
         handleIndicatorStyle={tailwind.style('overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]')}
         // TODO: Fix this later
         // bottomInset={bottom === 0 ? 12 : bottom}
@@ -381,6 +385,7 @@ const SettingsScreen = () => {
       <BottomSheetModal
         ref={switchAccountSheetRef}
         backdropComponent={BottomSheetBackdrop}
+        backgroundStyle={tailwind.style(colorScheme === 'dark' ? 'bg-grayDark-50' : 'bg-white')}
         handleIndicatorStyle={tailwind.style('overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]')}
         // TODO: Fix this later
         // bottomInset={bottom === 0 ? 12 : bottom}
@@ -401,6 +406,7 @@ const SettingsScreen = () => {
       <BottomSheetModal
         ref={debugActionsSheetRef}
         backdropComponent={BottomSheetBackdrop}
+        backgroundStyle={tailwind.style(colorScheme === 'dark' ? 'bg-grayDark-50' : 'bg-white')}
         handleIndicatorStyle={tailwind.style('overflow-hidden bg-blackA-A6 dark:bg-whiteA-A6 w-8 h-1 rounded-[11px]')}
         enablePanDownToClose
         animationConfigs={animationConfigs}
